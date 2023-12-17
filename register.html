@@ -259,33 +259,39 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             let domain = $("#domain").val();
 
             let inputs = $("input");
+            var input_error = false;
             for(let i = 0; i < inputs.length; i++){
-                // if (inputs[i].value == "") {
-                //     inputs[i].style.border = '1px solid red';
-                // }
-                
-                    // to be put in else
-            }
-            $.ajax({
-                type: "POST",
-                url: "http://localhost/code-arena-api/saveData.php",
-                data: new FormData(this),
-                dataType: "json",
-                contentType: false,
-                processData: false,
-                cache: false,
-                beforeSend: function () {
-                    // $("#submitForm").prop('disabled', true);
-                    $("#register-form").css('opacity', '0.5');
-                },
-                success: function (x) {
-                    console.log(x);
-                },
-                error: function () {
-                    console.log("err wd req");
+                if (inputs[i].value == "") {
+                    inputs[i].style.border = '1px solid red';
+                    input_error = true;
                 }
+                
+            }
+            if (input_error == false) {
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/code-arena-api/saveData.php",
+                    data: new FormData(this),
+                    dataType: "json",
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    beforeSend: function () {
+                        $("#submitForm").prop('disabled', true);
+                        $("#register-form").css('opacity', '0.5');
+                    },
+                    success: function (x) {
+                        console.log(x);
+                        $("#submitForm").prop('disabled', false);
+                        $("#register-form").css('opacity', '1');
+                        alert(x.msg);
+                    },
+                    error: function () {
+                        console.log("err wd req");
+                    }
 
-            });
+                });
+            }
 
         })
     </script>

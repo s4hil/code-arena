@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <!-- Required meta tags -->
+    <!-- meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="contact-page">
     <header class="site-header">
         <div class="header-bar">
             <div class="container-fluid">
@@ -45,7 +45,6 @@
                                 <li><a href="index.html">HOME</a></li>
                                 <li><a href="brochure.pdf">BROCHURE</a></li>
                                 <li><a href="register.html">REGISTER</a></li>
-                                <li><a href="getqr.html">GET QR</a></li>
                             </ul><!-- flex -->
                         </nav><!-- .site-navigation -->
                     </div><!-- .col-12 -->
@@ -53,66 +52,57 @@
             </div><!-- container-fluid -->
         </div><!-- header-bar -->
     </header><!-- .site-header -->
-
-    <div class="hero-content">
+    <div class="page-header">
         <div class="container">
             <div class="row">
-                <div class="col-12 offset-lg-1 col-lg-10">
+                <div class="col-12">
                     <div class="entry-header">
-                        <h2>Code Arena</h2>
+                        <h2 class="entry-title">Get QR</h2>
 
-                        <div class="entry-meta-date">
-                            <!-- 2023/12/25 -->
-                        </div><!-- .entry-meta-date -->
-                    </div><!-- .entry-header -->
-
-                    <div class="countdown flex flex-wrap justify-content-between" data-date="2023/12/25">
-                        <div class="countdown-holder">
-                            <div class="dday"></div>
-                            <label>Days</label>
-                        </div><!-- .countdown-holder -->
-
-                        <div class="countdown-holder">
-                            <div class="dhour"></div>
-                            <label>Hours</label>
-                        </div><!-- .countdown-holder -->
-
-                        <div class="countdown-holder">
-                            <div class="dmin"></div>
-                            <label>Minutes</label>
-                        </div><!-- .countdown-holder -->
-
-                        <div class="countdown-holder">
-                            <div class="dsec"></div>
-                            <label>Seconds</label>
-                        </div><!-- .countdown-holder -->
-                    </div><!-- .countdown -->
-                </div><!-- .col-12 -->
+                        <ul class="breadcrumbs flex align-items-center">
+                            <li><a href="#">Home</a></li>
+                            <li>Get QR</li>
+                        </ul><!-- .breadcrumbs -->
+                    </div><!-- entry-header -->
+                </div><!-- col-12 -->
             </div><!-- row -->
+        </div><!-- container -->
+    </div><!-- page-header -->
 
-            <div class="row">
-                <div class="col-12 ">
-                    <div class="entry-footer">
-                        <a href="brochure.pdf" class="btn">Brochure</a>
-                        <a href="register.html" class="btn current">Register</a>
+    <div class="container">
+        <div class="main-content">
+            
+            
+            <div class="get-in-touch">
+                <div class="entry-header pt-5">
+                    <div class="entry-title">
+                        <!-- <p>JUST THE BEST</p> -->
+                        <h2>Get QR</h2>
+                    </div><!-- entry-title -->
+                </div><!-- entry-header -->
+
+                <div class="entry-content">
+                    <p>Download Your QR Now</p>
+                </div><!-- entry-content -->
+
+                <div class="contact-form">
+                    <div class="col-12">
+                        <input type="email" placeholder="Enter registered email" maxlength="30" id="email">
+                    </div><!-- col-4 -->
+                    
+                    <div class="col-12 submit flex justify-content-center">
+                        <button class="btn" id="submitForm">Fetch</button>
                     </div>
+                    <br>
                 </div>
-            </div>
-        </div><!-- .container -->
-    </div><!-- .hero-content -->
 
-    <!-- <div class="content-section" style="max-height: 10vh"> -->
-            
-            <br>
-            <br>
-            <hr>
-            <br>
-            <br>
-            
-    <!-- </div> -->
+            </div><!-- newsletter-subscribe -->
+        </div><!-- main-content -->
+    </div><!-- container -->
+
     <footer class="site-footer">
         <div class="footer-cover-title flex justify-content-center align-items-center">
-            <h2>SUNFEST</h2>
+            <h2>Code Arena</h2>
         </div><!-- .site-footer -->
 
         <div class="footer-content-wrapper">
@@ -155,5 +145,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script type='text/javascript' src='js/circle-progress.min.js'></script>
     <script type='text/javascript' src='js/jquery.countTo.min.js'></script>
     <script type='text/javascript' src='js/custom.js'></script>
+    <script>
+        $("#submitForm").click((e)=>{
+            let email = $("#email").val();
+
+            $.ajax({
+                url: "http://localhost/code-arena-api/getQR.php",
+                method: "POST",
+                data: JSON.stringify({ email:email }),
+                dataType: "json",
+                success: function (x) {
+                    console.log(x);
+                },
+                error: function () {
+                    console.log("err wd get qr data req");
+                }
+            })
+        });
+    </script>
 </body>
 </html>
