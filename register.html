@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Hello World!</title>
+    <!-- favicon -->
+    <link rel="icon" href="favicon.png">
+
+    <title>Register - Code Arena</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <!-- Bootstrap CSS -->
@@ -45,6 +48,7 @@
                                 <li><a href="index.html">HOME</a></li>
                                 <li><a href="brochure.pdf">BROCHURE</a></li>
                                 <li><a href="register.html">REGISTER</a></li>
+                                <li><a href="getqr.html">GET QR</a></li>
                             </ul><!-- flex -->
                         </nav><!-- .site-navigation -->
                     </div><!-- .col-12 -->
@@ -153,6 +157,7 @@
                                     <option value="Web Dev">Web Development</option>
                                     <option value="Gaming">Gaming</option>
                                     <option value="IOT">IoT</option>
+                                    <option value="Cyber Security">Cyber Security</option>
                                 </select>
                             </div>
 
@@ -198,12 +203,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
                         <div class="footer-social">
                             <ul class="flex justify-content-center align-items-center">
-                                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                
                             </ul>
                         </div><!-- footer-social -->
                     </div><!-- col -->
@@ -220,6 +220,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script type='text/javascript' src='js/circle-progress.min.js'></script>
     <script type='text/javascript' src='js/jquery.countTo.min.js'></script>
     <script type='text/javascript' src='js/custom.js'></script>
+    <script type='text/javascript' src='js/config.js'></script>
     <script>
         $("#register-form").on('submit', function (e) {
             e.preventDefault();
@@ -270,7 +271,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             if (input_error == false) {
                 $.ajax({
                     type: "POST",
-                    url: "http://localhost/code-arena-api/saveData.php",
+                    url: SAVE_DATA,
                     data: new FormData(this),
                     dataType: "json",
                     contentType: false,
