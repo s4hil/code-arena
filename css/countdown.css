@@ -48,7 +48,7 @@
   .minutes-container, 
   .seconds-container {
     font-size: 0.7em;
-    width: 100px;
+    width: 80px;
     height: 100px;
     margin: 5px;
   }
